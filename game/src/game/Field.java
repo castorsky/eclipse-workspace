@@ -8,7 +8,7 @@ import java.io.*;
 
 public class Field extends JPanel {
 	private Image background, basket, gameover;
-	private int basketX = 350;
+	private int basketX = 350, level;
 	private Ball[] balls;
 	private Timer redrawTimer, checkBalls;
 	
@@ -18,10 +18,11 @@ public class Field extends JPanel {
 		}
 	}
 	
-	public Field() {
-		balls = new Ball[5]; // ARRAY = МАССИВ
+	public Field(int level) {
+		this.level = level;
+		balls = new Ball[level]; // ARRAY = МАССИВ
 		try {
-			for (int i=0; i<5; i++) {
+			for (int i=0; i<level; i++) {
 				balls[i] = new Ball(ImageIO.read(
 					new File("/home/user/Документы/ball"+(i+1)+".png")));     
 			}
@@ -64,7 +65,7 @@ public class Field extends JPanel {
 			if (balls[i].isActive()) {
 				counter++; // Если мяч уже есть, то увеличиваем счетчик
 			} else {
-				if (counter < 5) {
+				if (counter < level) {
 					balls[i].start();
 					break;
 				}

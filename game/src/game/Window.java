@@ -5,17 +5,20 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Window extends JFrame {
+	private int level;
 	private Field field;
-	public Window() {
+	public Window(int level) {
+		this.level = level;
 		setBounds(100,100,800,600);
 		setTitle("Game: Catch the ball");
 		addKeyListener(new MyKey());
 		setFocusable(true);
-		field = new Field();
+		field = new Field(level);
 		Container container = getContentPane();
 		container.add(field);
 		setVisible(true);
 	}
+
 	private class MyKey implements KeyListener {
 
 		@Override
