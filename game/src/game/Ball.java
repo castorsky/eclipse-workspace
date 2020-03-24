@@ -54,7 +54,7 @@ public class Ball {
 
 	protected void moveDown() {
 		if (active) {
-			ballY += 25;
+			ballY += 5;
 		}
 		if (ballY > 445) {
 			ballTimer.stop();
